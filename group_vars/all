@@ -1,0 +1,4 @@
+external_interface: eth1
+external_gateway: 172.100.0.1
+external_netmask: 255.255.255.0
+pacemaker_external_shared_secret: YOUSHOULDCHANGETHIS

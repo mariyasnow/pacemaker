@@ -1,0 +1,8 @@
+---
+- name: install emacs
+  apt: >
+       update_cache=yes    
+       name=emacs
+       install_recommends=yes
+       state=present
+

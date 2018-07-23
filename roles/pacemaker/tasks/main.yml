@@ -1,0 +1,42 @@
+# Corosync + Pacemaker setup and config
+---
+- name: install pacemaker 
+  apt: >
+       update_cache=yes
+       name=pacemaker
+       install_recommends=yes
+       state=present
+
+- name: install coreosync
+  apt: >
+       update_cache=yes    
+       name=corosync
+       install_recommends=yes
+       state=present
+
+- name: configure corosync to be able to listen the messages that are going to be sent in the network
+  template:
+    src=roles/pacemaker/templates/corosync.conf
+    dest=/etc/corosync/corosync.conf
+  notify:
+    -  start pacemaker  
+
+- name: Before being able to start corosync, we need to edit /etc/default/corosync and enable it by changing the no to yes
+  template:
+    src=roles/pacemaker/templates/corosync
+    dest=/etc/default/corosync
+  notify:
+    -  start corosync 
+
+- name: ensure pacemaker is running 
+  service: name=pacemaker state=started enabled=yes
+
+- name: ensure corosync is running 
+  service: name=corosync state=started enabled=yes
+
+#- name: test connections 
+#sudo crm_mon
+#sudo crm configure show
+#sudo crm configure show xml
+#sudo crm_verify -L -V
+#crm configure property stonith-enabled=false

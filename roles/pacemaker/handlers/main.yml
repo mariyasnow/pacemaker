@@ -1,0 +1,7 @@
+# Corosync and Pacemaker service pid
+---
+- name: start pacemaker
+  service: name=pacemaker state=started
+
+- name: start corosync
+  service: name=corosync state=started
