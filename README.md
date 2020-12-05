@@ -3,6 +3,7 @@ Pacemaker Basic
 Stripped down pacemaker/corosync basic setup to get started
 
 * This will bring up 3 Vagrant boxes with a Host Only network and execute ansible role to install Corosync and Pacemaker
+* Playground for raft algorithm https://raft.github.io/
 
 ### Why?
 Pacemaker is flexible and reliable for managing critical resources from router availibility to mysql instances. Legacy configs "just work" and can be rather tricky to desipher so this deploy strips off all the complications down to the basic functionality
